@@ -18,12 +18,22 @@ npm run dev
 
 Die Entwicklungsumgebung ist unter [http://localhost:3000](http://localhost:3000) erreichbar.
 
+## Produktion
+
+```bash
+npm run build
+npm start
+```
+
 ## Inhalt
 
-- Startseite mit Hero-Bereich, Leistungsübersicht, Über-uns-Sektion und Kontaktbereich
-- Responsive Design (mobile-first)
-- SEO-optimierte Metadaten
-- Deutsche Sprache
+- **Hero-Bereich** mit Firmenpräsentation und Kennzahlen
+- **Leistungen** - Gebäudereinigung, Treppenhausreinigung, Unterhaltsreinigung, Glasreinigung, Hausmeisterservice, Winterdienst
+- **Über uns** - Unternehmensprofil mit Schwerpunkt auf Zuverlässigkeit, Qualität und regionaler Verbundenheit
+- **Kontakt** - Telefon, E-Mail und Adresse
+- Responsive Design (mobile-first) mit Hamburger-Menü
+- SEO-optimierte Metadaten und Open-Graph-Tags
+- Deutsche Sprache durchgehend
 
 ## Kontakt
 

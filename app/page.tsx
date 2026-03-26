@@ -158,7 +158,7 @@ export default function Home() {
             <h2 className="section-title">Unsere Leistungen</h2>
             <p className="section-subtitle">
               Wir bieten Ihnen ein umfassendes Spektrum an Reinigungs- und
-              Hausmeisterdienstleistungen -- alles aus einer Hand.
+              Hausmeisterdienstleistungen &mdash; alles aus einer Hand.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {[
@@ -184,7 +184,7 @@ export default function Home() {
                   icon: "🪟",
                   title: "Glasreinigung",
                   description:
-                    "Streifenfreie Reinigung von Fenstern, Glasfassaden und Schaufenstern -- auch in schwer zugänglichen Bereichen.",
+                    "Streifenfreie Reinigung von Fenstern, Glasfassaden und Schaufenstern &mdash; auch in schwer zugänglichen Bereichen.",
                 },
                 {
                   icon: "🔧",
@@ -295,7 +295,7 @@ export default function Home() {
             </h2>
             <p className="text-lg text-primary-100 mb-8 max-w-2xl mx-auto">
               Lassen Sie sich unverbindlich beraten. Wir erstellen Ihnen gerne
-              ein individuelles Angebot -- kostenlos und ohne Verpflichtung.
+              ein individuelles Angebot &mdash; kostenlos und ohne Verpflichtung.
             </p>
             <a
               href="#kontakt"
