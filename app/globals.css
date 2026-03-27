@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,7 +10,16 @@ html {
 
 @layer base {
   body {
-    @apply antialiased text-gray-800;
+    @apply antialiased text-gray-800 font-sans;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
   }
 }
 
@@ -18,10 +29,43 @@ html {
   }
 
   .section-title {
-    @apply text-3xl font-bold text-center text-gray-900 sm:text-4xl mb-4;
+    @apply text-3xl font-bold text-center text-gray-900 sm:text-4xl mb-4 font-heading;
   }
 
   .section-subtitle {
     @apply text-lg text-center text-gray-600 max-w-2xl mx-auto mb-12;
+  }
+
+  .prose-custom h2 {
+    @apply text-2xl sm:text-3xl font-bold text-gray-900 mt-16 mb-6 first:mt-0 font-heading;
+  }
+
+  .prose-custom h3 {
+    @apply text-xl font-bold text-gray-900 mt-10 mb-4 font-heading;
+  }
+
+  .prose-custom p {
+    @apply text-gray-600 leading-relaxed mb-4;
+  }
+
+  .prose-custom ul {
+    @apply space-y-3 mb-6;
+  }
+
+  .prose-custom li {
+    @apply text-gray-600 leading-relaxed pl-6 relative;
+  }
+
+  .prose-custom li::before {
+    content: "";
+    @apply absolute left-0 top-[0.6em] w-2 h-2 rounded-full bg-brand-500;
+  }
+
+  .prose-custom strong {
+    @apply text-gray-900 font-semibold;
+  }
+
+  .prose-custom a {
+    @apply text-brand-500 font-medium hover:text-brand-600 transition-colors underline underline-offset-2;
   }
 }
