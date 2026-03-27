@@ -69,3 +69,18 @@ html {
     @apply text-brand-500 font-medium hover:text-brand-600 transition-colors underline underline-offset-2;
   }
 }
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-in {
+  animation: slideUp 0.3s ease-out;
+}

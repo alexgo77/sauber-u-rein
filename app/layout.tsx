@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
+import WhatsAppButton from "./components/WhatsAppButton";
 
 export const metadata: Metadata = {
   title: {
@@ -52,6 +53,7 @@ export default function RootLayout({
         <Navigation />
         <main className="pt-16 sm:pt-20">{children}</main>
         <Footer />
+        <WhatsAppButton />
       </body>
     </html>
   );
