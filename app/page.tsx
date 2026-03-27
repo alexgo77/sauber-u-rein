@@ -1,417 +1,377 @@
-"use client";
+import Link from "next/link";
+import CTABanner from "./components/CTABanner";
+import FAQ from "./components/FAQ";
 
-import { useState } from "react";
+const services = [
+  {
+    icon: "🏢",
+    title: "Büroreinigung Regensburg",
+    href: "/bueroreinigung-regensburg",
+    description:
+      "Saubere Büros steigern die Arbeitsqualität und reduzieren Krankheitstage. Wir reinigen Büroflächen, Gemeinschaftsräume, Teeküchen und Sanitäranlagen nach einem festen Reinigungsplan.",
+  },
+  {
+    icon: "🏥",
+    title: "Praxisreinigung & Desinfektion",
+    href: "/praxisreinigung-regensburg",
+    description:
+      "Arztpraxen, Zahnarztpraxen und Pflegeeinrichtungen stellen besondere Anforderungen an Hygiene. Wir arbeiten nach den Empfehlungen des Robert Koch-Instituts (RKI).",
+  },
+  {
+    icon: "🪟",
+    title: "Fenster- und Glasreinigung",
+    href: "/fensterreinigung-regensburg",
+    description:
+      "Klare Scheiben ohne Schlieren verbessern den Eindruck Ihres Gebäudes sofort. Wir reinigen Fensterfronten, Glastüren, Schaufenster und Fassadenverglasung.",
+  },
+  {
+    icon: "🏗️",
+    title: "Bau- und Industriereinigung",
+    href: "/baureinigung-regensburg",
+    description:
+      "Nach Umbau, Neubau oder Renovierung hinterlassen Handwerker Staub, Farbreste und Bauschutt. Unsere Baureinigung schafft saubere Verhältnisse.",
+  },
+  {
+    icon: "🔧",
+    title: "Hausmeisterservice",
+    href: "/hausmeisterservice-regensburg",
+    description:
+      "Gebäudereinigung und Hausmeisterservice aus einer Hand: Das spart Ihnen einen Ansprechpartner und vereinfacht die Koordination.",
+  },
+  {
+    icon: "❄️",
+    title: "Winterdienst & Gartenpflege",
+    href: "/winterdienst-regensburg",
+    description:
+      "Die Räum- und Streupflicht in Bayern ist klar geregelt. Wir übernehmen den Winterdienst zuverlässig: Schneeräumung, Streuen und Dokumentation.",
+  },
+];
+
+const faqItems = [
+  {
+    question: "Was kostet eine professionelle Gebäudereinigung in Regensburg?",
+    answer:
+      "Die Kosten hängen von Objektgröße, Reinigungsintervall und Art der Leistung ab. Regelmäßige Unterhaltsreinigung für ein Büro mit 150 m² liegt erfahrungsgemäß zwischen 150 und 350 Euro pro Monat. Grundreinigungen und Spezialleistungen wie Desinfektion werden separat kalkuliert. Wir erstellen Ihnen ein konkretes, kostenloses Angebot ohne Pauschalen.",
+  },
+  {
+    question: "Für welche Gebäude bietet Sauber & Rein Reinigungsleistungen an?",
+    answer:
+      "Wir reinigen Büros, Arztpraxen, Zahnarztpraxen, Pflegeheime, Schulen, Kitas, Einkaufszentren, Wohnanlagen, Industriehallen und private Haushalte in Regensburg. Kurz: Wenn ein Gebäude gereinigt werden muss, sind wir der richtige Ansprechpartner.",
+  },
+  {
+    question: "Wie unterscheidet sich Sauber & Rein von anderen Reinigungsunternehmen in Regensburg?",
+    answer:
+      "Der wichtigste Unterschied ist die Kombination aus Reinigung, Desinfektion nach medizinischen Standards und vollständigem Hausmeisterservice — alles aus einer Hand. Dazu kommt die individuelle Betreuung: Kein Einheitspaket, sondern ein Reinigungsplan, der zu Ihrem Objekt passt.",
+  },
+  {
+    question: "Bietet Sauber & Rein auch Desinfektion an?",
+    answer:
+      "Ja. Desinfektion ist ein zentraler Bestandteil unseres Leistungsangebots. Wir arbeiten mit geprüften Desinfektionsmitteln nach DGHM-Liste und richten uns nach den RKI-Empfehlungen. Besonders für medizinische Einrichtungen in Regensburg ist das ein entscheidender Vorteil.",
+  },
+  {
+    question: "Wie oft sollte ein Büro professionell gereinigt werden?",
+    answer:
+      "Das hängt von der Bürogröße und der Anzahl der Mitarbeiter ab. Kleine Büros mit bis zu 10 Arbeitsplätzen kommen oft mit zwei bis drei Reinigungen pro Woche aus. Größere Büroflächen mit Publikumsverkehr brauchen tägliche Reinigung.",
+  },
+  {
+    question: "Übernimmt Sauber & Rein auch den Winterdienst?",
+    answer:
+      "Ja. Wir übernehmen die Räum- und Streupflicht für Gewerbeobjekte und Wohnanlagen in Regensburg. Das schließt Schneeräumung, Streuen bei Glatteis und die Dokumentation ein. In Bayern haftet der Eigentümer — mit Sauber & Rein sind Sie auf der sicheren Seite.",
+  },
+];
 
 export default function Home() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
   return (
     <>
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 sm:h-20">
-            <a href="#" className="flex items-center gap-2">
-              <span className="text-2xl">✦</span>
-              <span className="text-xl sm:text-2xl font-bold text-gray-900">
-                Sauber{" "}
-                <span className="text-primary-600">&amp;</span> Rein
-              </span>
-            </a>
-            <div className="hidden md:flex items-center gap-8">
-              <a
-                href="#leistungen"
-                className="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors"
-              >
-                Leistungen
-              </a>
-              <a
-                href="#ueber-uns"
-                className="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors"
-              >
-                Über uns
-              </a>
-              <a
-                href="#kontakt"
-                className="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors"
-              >
-                Kontakt
-              </a>
-              <a
-                href="#kontakt"
-                className="inline-flex items-center px-5 py-2.5 rounded-lg bg-primary-600 text-white text-sm font-semibold hover:bg-primary-700 transition-colors"
-              >
-                Angebot anfordern
-              </a>
+      {/* Hero Section */}
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-brand-50 via-white to-gray-50" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 md:py-32">
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-100 text-brand-500 text-sm font-medium mb-6">
+              Reinigungsunternehmen in Regensburg
             </div>
-            {/* Mobile hamburger button */}
-            <button
-              className="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Menü öffnen"
-            >
-              {mobileMenuOpen ? (
-                <span className="text-2xl leading-none">&#x2715;</span>
-              ) : (
-                <span className="text-2xl leading-none">&#x2630;</span>
-              )}
-            </button>
-          </div>
-          {/* Mobile menu */}
-          {mobileMenuOpen && (
-            <div className="md:hidden border-t border-gray-100 py-4 space-y-2">
-              <a
-                href="#leistungen"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block px-4 py-2.5 rounded-lg text-sm font-medium text-gray-700 hover:bg-primary-50 hover:text-primary-700 transition-colors"
-              >
-                Leistungen
-              </a>
-              <a
-                href="#ueber-uns"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block px-4 py-2.5 rounded-lg text-sm font-medium text-gray-700 hover:bg-primary-50 hover:text-primary-700 transition-colors"
-              >
-                Über uns
-              </a>
-              <a
-                href="#kontakt"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block px-4 py-2.5 rounded-lg text-sm font-medium text-gray-700 hover:bg-primary-50 hover:text-primary-700 transition-colors"
-              >
-                Kontakt
-              </a>
-              <a
-                href="#kontakt"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block mx-4 mt-2 text-center px-5 py-2.5 rounded-lg bg-primary-600 text-white text-sm font-semibold hover:bg-primary-700 transition-colors"
-              >
-                Angebot anfordern
-              </a>
-            </div>
-          )}
-        </div>
-      </nav>
-
-      <main>
-        {/* Hero Section */}
-        <section className="relative pt-20 sm:pt-24 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary-50 via-white to-accent-50" />
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 md:py-36">
-            <div className="max-w-3xl">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-100 text-primary-700 text-sm font-medium mb-6">
-                <span>★</span>
-                Ihr Partner in Regensburg
-              </div>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 leading-tight mb-6">
-                Professionelle{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-accent-600">
-                  Gebäudereinigung
-                </span>{" "}
-                &amp; Hausmeisterservice
-              </h1>
-              <p className="text-lg sm:text-xl text-gray-600 leading-relaxed mb-8 max-w-2xl">
-                Sauber &amp; Rein steht für zuverlässige und gründliche
-                Reinigungsdienstleistungen in Regensburg und Umgebung. Wir
-                sorgen dafür, dass Ihre Immobilie stets in bestem Zustand
-                erstrahlt.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <a
-                  href="#kontakt"
-                  className="inline-flex items-center justify-center px-8 py-3.5 rounded-lg bg-primary-600 text-white font-semibold hover:bg-primary-700 transition-colors shadow-lg shadow-primary-600/25"
-                >
-                  Kostenloses Angebot anfordern
-                </a>
-                <a
-                  href="#leistungen"
-                  className="inline-flex items-center justify-center px-8 py-3.5 rounded-lg border-2 border-gray-200 text-gray-700 font-semibold hover:border-primary-300 hover:text-primary-700 transition-colors"
-                >
-                  Unsere Leistungen →
-                </a>
-              </div>
-            </div>
-            {/* Decorative stats */}
-            <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-              {[
-                { value: "10+", label: "Jahre Erfahrung" },
-                { value: "500+", label: "Zufriedene Kunden" },
-                { value: "100%", label: "Zuverlässigkeit" },
-                { value: "24/7", label: "Erreichbar" },
-              ].map((stat) => (
-                <div key={stat.label} className="text-center">
-                  <div className="text-2xl sm:text-3xl font-bold text-primary-600">
-                    {stat.value}
-                  </div>
-                  <div className="text-sm text-gray-500 mt-1">
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Leistungen (Services) Section */}
-        <section id="leistungen" className="section-padding bg-white">
-          <div className="max-w-7xl mx-auto">
-            <h2 className="section-title">Unsere Leistungen</h2>
-            <p className="section-subtitle">
-              Wir bieten Ihnen ein umfassendes Spektrum an Reinigungs- und
-              Hausmeisterdienstleistungen &mdash; alles aus einer Hand.
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 leading-tight mb-6">
+              Professionelle{" "}
+              <span className="text-brand-500">Gebäudereinigung</span>{" "}
+              in Regensburg
+            </h1>
+            <p className="text-lg sm:text-xl text-gray-600 leading-relaxed mb-4 max-w-2xl">
+              Sauber &amp; Rein ist Ihr Reinigungsunternehmen in Regensburg für
+              Privathaushalte, Gewerbebetriebe, Arztpraxen, Büros und
+              Immobilienverwaltungen.
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            <p className="text-lg text-gray-600 leading-relaxed mb-8 max-w-2xl">
+              Was uns von anderen Reinigungsfirmen unterscheidet: Wir verbinden
+              Gebäudereinigung mit Desinfektion nach medizinischen Standards.
+              Für Ihre Räume bedeutet das keine oberflächliche Sauberkeit &mdash;
+              sondern <strong>echte Hygiene</strong>.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <a
+                href="tel:+491705749211"
+                className="inline-flex items-center justify-center px-8 py-3.5 rounded-lg bg-brand-500 text-white font-semibold hover:bg-brand-600 transition-colors shadow-lg shadow-brand-500/25"
+              >
+                📞 +49 (0) 170 5749211
+              </a>
+              <a
+                href="#kontakt"
+                className="inline-flex items-center justify-center px-8 py-3.5 rounded-lg border-2 border-gray-200 text-gray-700 font-semibold hover:border-brand-300 hover:text-brand-500 transition-colors"
+              >
+                Kostenloses Angebot anfordern →
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Leistungen */}
+      <section id="leistungen" className="section-padding bg-white">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="section-title">Unsere Leistungen im Überblick</h2>
+          <p className="section-subtitle">
+            Als Reinigungsunternehmen in Regensburg decken wir alle relevanten
+            Bereiche ab &mdash; von der regelmäßigen Unterhaltsreinigung bis zur
+            einmaligen Grundreinigung. Jede Leistung wird individuell auf Ihr
+            Objekt abgestimmt.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {services.map((service) => (
+              <Link
+                key={service.href}
+                href={service.href}
+                className="group relative p-6 sm:p-8 rounded-2xl border border-gray-100 bg-white hover:border-brand-200 hover:shadow-lg hover:shadow-brand-100/50 transition-all duration-300"
+              >
+                <div className="text-4xl mb-4">{service.icon}</div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-brand-500 transition-colors">
+                  {service.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed text-sm">
+                  {service.description}
+                </p>
+                <span className="inline-flex items-center mt-4 text-sm font-semibold text-brand-500 group-hover:text-brand-600">
+                  Mehr erfahren →
+                </span>
+              </Link>
+            ))}
+          </div>
+          <div className="text-center mt-10">
+            <p className="text-gray-600">
+              Sie wissen bereits, welche Leistung Sie brauchen?{" "}
+              <a href="tel:+491705749211" className="text-brand-500 font-semibold hover:text-brand-600">
+                +49 (0) 170 5749211
+              </a>{" "}
+              oder{" "}
+              <a href="mailto:kontakt@sauber-u-rein.de" className="text-brand-500 font-semibold hover:text-brand-600">
+                kontakt@sauber-u-rein.de
+              </a>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* USP: Desinfektion */}
+      <section className="section-padding bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div>
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
+                Reinigung und Desinfektion nach{" "}
+                <span className="text-brand-500">medizinischen Standards</span>
+              </h2>
+              <div className="space-y-4 text-gray-600 leading-relaxed">
+                <p>
+                  Die meisten Reinigungsfirmen in Regensburg reinigen. Wir
+                  desinfizieren &mdash; und das nach definierten medizinischen
+                  Standards, nicht nach Gefühl.
+                </p>
+                <p>
+                  Unsere Reinigungskräfte arbeiten mit Desinfektionsmitteln, die
+                  den Anforderungen der Deutschen Gesellschaft für Hygiene und
+                  Mikrobiologie (DGHM) entsprechen. Wir orientieren uns an den
+                  Empfehlungen des Robert Koch-Instituts (RKI) für
+                  Flächendesinfektion in medizinischen Einrichtungen.
+                </p>
+                <p>
+                  Das macht Sauber &amp; Rein zur ersten Wahl für Arztpraxen,
+                  Zahnarztpraxen, Pflegeheime, Tageskliniken und Laborräume in
+                  Regensburg.
+                </p>
+              </div>
+              <Link
+                href="/praxisreinigung-regensburg"
+                className="inline-flex items-center mt-6 text-brand-500 font-semibold hover:text-brand-600"
+              >
+                Mehr zur Praxisreinigung →
+              </Link>
+            </div>
+            <div className="grid grid-cols-2 gap-4 sm:gap-6">
               {[
-                {
-                  icon: "🏢",
-                  title: "Gebäudereinigung",
-                  description:
-                    "Professionelle Reinigung von Bürogebäuden, Praxen, Gewerbeflächen und öffentlichen Einrichtungen nach höchsten Standards.",
-                },
-                {
-                  icon: "🪜",
-                  title: "Treppenhausreinigung",
-                  description:
-                    "Regelmäßige und gründliche Reinigung von Treppenhäusern und Gemeinschaftsflächen in Wohnanlagen.",
-                },
-                {
-                  icon: "🧹",
-                  title: "Unterhaltsreinigung",
-                  description:
-                    "Laufende Reinigung Ihrer Räumlichkeiten in individuell vereinbarten Intervallen für dauerhaft saubere Ergebnisse.",
-                },
-                {
-                  icon: "🪟",
-                  title: "Glasreinigung",
-                  description:
-                    "Streifenfreie Reinigung von Fenstern, Glasfassaden und Schaufenstern &mdash; auch in schwer zugänglichen Bereichen.",
-                },
-                {
-                  icon: "🔧",
-                  title: "Hausmeisterservice",
-                  description:
-                    "Zuverlässiger Hausmeisterdienst für Ihre Immobilie: Kleinreparaturen, Kontrollen, Pflege der Außenanlagen und mehr.",
-                },
-                {
-                  icon: "❄️",
-                  title: "Winterdienst",
-                  description:
-                    "Professioneller Räum- und Streudienst für sichere Gehwege und Zufahrten in der kalten Jahreszeit.",
-                },
-              ].map((service) => (
+                { title: "RKI-konform", text: "Desinfektion nach Robert Koch-Institut Empfehlungen" },
+                { title: "Dokumentiert", text: "Reinigungsprotokolle und Nachweise auf Wunsch" },
+                { title: "Alles aus einer Hand", text: "Reinigung + Hausmeisterservice kombiniert" },
+                { title: "Lokal in Regensburg", text: "Ortskenntnis von Altstadt bis Gewerbepark" },
+              ].map((item) => (
                 <div
-                  key={service.title}
-                  className="group relative p-6 sm:p-8 rounded-2xl border border-gray-100 bg-white hover:border-primary-200 hover:shadow-lg hover:shadow-primary-100/50 transition-all duration-300"
+                  key={item.title}
+                  className="p-5 sm:p-6 rounded-xl bg-white border border-gray-100 shadow-sm"
                 >
-                  <div className="text-4xl mb-4">{service.icon}</div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary-700 transition-colors">
-                    {service.title}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    {service.description}
-                  </p>
+                  <div className="w-10 h-10 rounded-lg bg-brand-100 text-brand-500 flex items-center justify-center font-bold text-lg mb-3">
+                    ✓
+                  </div>
+                  <h3 className="font-bold text-gray-900 mb-1">{item.title}</h3>
+                  <p className="text-sm text-gray-500">{item.text}</p>
                 </div>
               ))}
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Über uns (About) Section */}
-        <section id="ueber-uns" className="section-padding bg-gray-50">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-              <div>
-                <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
-                  Über{" "}
-                  <span className="text-primary-600">Sauber &amp; Rein</span>
-                </h2>
-                <div className="space-y-4 text-gray-600 leading-relaxed">
-                  <p>
-                    Sauber &amp; Rein ist Ihr zuverlässiger Dienstleister für
-                    Gebäudereinigung und Hausmeisterservice in Regensburg und der
-                    gesamten Oberpfalz. Mit langjähriger Erfahrung und einem
-                    engagierten Team sorgen wir dafür, dass Ihre Immobilie
-                    stets gepflegt und einladend wirkt.
-                  </p>
-                  <p>
-                    Qualität, Pünktlichkeit und Vertrauen sind die Grundpfeiler
-                    unserer Arbeit. Wir setzen auf geschultes Personal,
-                    umweltfreundliche Reinigungsmittel und modernste
-                    Ausstattung, um Ihnen erstklassige Ergebnisse zu liefern.
-                  </p>
-                  <p>
-                    Als lokales Unternehmen kennen wir die Bedürfnisse unserer
-                    Kunden in Regensburg genau und sind stolz darauf,
-                    langfristige Partnerschaften aufzubauen.
-                  </p>
+      {/* Ablauf */}
+      <section id="ablauf" className="section-padding bg-white">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="section-title">So läuft die Zusammenarbeit ab</h2>
+          <p className="section-subtitle">
+            Sie fragen an &mdash; wir kümmern uns um den Rest.
+          </p>
+          <div className="space-y-6">
+            {[
+              {
+                step: "1",
+                title: "Kostenloses Erstgespräch",
+                text: "Sie schildern uns Ihr Objekt und Ihre Anforderungen. Per Telefon unter +49 (0) 170 5749211, per E-Mail an kontakt@sauber-u-rein.de oder über unser Kontaktformular.",
+              },
+              {
+                step: "2",
+                title: "Besichtigung vor Ort",
+                text: "Für eine seriöse Kalkulation besichtigen wir Ihr Objekt persönlich. Dabei erfassen wir Flächen, Materialien, Verschmutzungsgrad und besondere Anforderungen.",
+              },
+              {
+                step: "3",
+                title: "Individuelles Angebot",
+                text: "Sie erhalten ein schriftliches Angebot mit konkreten Preisen, Leistungsumfang und Reinigungsintervallen. Keine versteckten Kosten.",
+              },
+              {
+                step: "4",
+                title: "Regelmäßige Qualitätskontrolle",
+                text: "Nach Auftragsstart überprüfen wir die Reinigungsqualität in festgelegten Abständen. Ihr Feedback fließt direkt in die Anpassung der Reinigungspläne ein.",
+              },
+            ].map((item) => (
+              <div key={item.step} className="flex gap-4 sm:gap-6">
+                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-brand-500 text-white flex items-center justify-center font-bold text-lg">
+                  {item.step}
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{item.text}</p>
                 </div>
               </div>
-              <div className="grid grid-cols-2 gap-4 sm:gap-6">
-                {[
-                  {
-                    icon: "✓",
-                    title: "Zuverlässig",
-                    text: "Pünktlich und gewissenhaft bei jedem Einsatz",
-                  },
-                  {
-                    icon: "✓",
-                    title: "Qualitätsbewusst",
-                    text: "Höchste Standards bei allen Dienstleistungen",
-                  },
-                  {
-                    icon: "✓",
-                    title: "Flexibel",
-                    text: "Individuelle Lösungen für Ihre Anforderungen",
-                  },
-                  {
-                    icon: "✓",
-                    title: "Regional",
-                    text: "Fest verwurzelt in Regensburg und Umgebung",
-                  },
-                ].map((item) => (
-                  <div
-                    key={item.title}
-                    className="p-5 sm:p-6 rounded-xl bg-white border border-gray-100 shadow-sm"
-                  >
-                    <div className="w-10 h-10 rounded-lg bg-primary-100 text-primary-600 flex items-center justify-center font-bold text-lg mb-3">
-                      {item.icon}
-                    </div>
-                    <h3 className="font-bold text-gray-900 mb-1">
-                      {item.title}
-                    </h3>
-                    <p className="text-sm text-gray-500">{item.text}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
+            ))}
           </div>
-        </section>
+          <p className="mt-8 text-gray-600 text-center">
+            Bei Sauber &amp; Rein haben Sie immer einen festen Ansprechpartner.
+            Kurze Wege und schnelle Lösungen.
+          </p>
+        </div>
+      </section>
 
-        {/* CTA Banner */}
-        <section className="section-padding bg-gradient-to-r from-primary-600 to-accent-600">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-              Bereit für makellose Sauberkeit?
-            </h2>
-            <p className="text-lg text-primary-100 mb-8 max-w-2xl mx-auto">
-              Lassen Sie sich unverbindlich beraten. Wir erstellen Ihnen gerne
-              ein individuelles Angebot &mdash; kostenlos und ohne Verpflichtung.
-            </p>
-            <a
-              href="#kontakt"
-              className="inline-flex items-center px-8 py-3.5 rounded-lg bg-white text-primary-700 font-semibold hover:bg-gray-50 transition-colors shadow-lg"
-            >
-              Jetzt Kontakt aufnehmen →
-            </a>
+      {/* Vertrauen */}
+      <section className="section-padding bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="section-title">Warum Kunden Sauber &amp; Rein vertrauen</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+            {[
+              { title: "Individuelle Reinigungspläne", text: "Jedes Objekt ist anders. Wir entwickeln individuell angepasste Pläne mit festgelegten Zeiten und Kontrollpunkten." },
+              { title: "Alles aus einer Hand", text: "Gebäudereinigung und vollständiger Hausmeisterservice kombiniert. Eine Abrechnung, ein Ansprechpartner." },
+              { title: "Verlässlichkeit", text: "Termintreue und Erreichbarkeit sind bei uns keine Extras. Wir erscheinen pünktlich und melden Probleme proaktiv." },
+              { title: "Hygiene dokumentiert", text: "Reinigungsprotokolle und Nachweise über Desinfektionsmittel. Wichtig für Arztpraxen und Pflegeeinrichtungen." },
+              { title: "Flexible Zeiten", text: "Früh morgens, spät abends oder am Wochenende. Ihr Tagesgeschäft bleibt ungestört." },
+              { title: "Zufriedenheitsgarantie", text: "Nicht zufrieden? Wir kommen zurück und bessern nach. Ohne zusätzliche Kosten." },
+            ].map((item) => (
+              <div key={item.title} className="p-6 rounded-xl bg-white border border-gray-100">
+                <h3 className="font-bold text-gray-900 mb-2">{item.title}</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">{item.text}</p>
+              </div>
+            ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Kontakt (Contact) Section */}
-        <section id="kontakt" className="section-padding bg-white">
-          <div className="max-w-7xl mx-auto">
-            <h2 className="section-title">Kontakt</h2>
-            <p className="section-subtitle">
-              Haben Sie Fragen oder möchten Sie ein Angebot? Wir freuen uns auf
-              Ihre Nachricht und beraten Sie gerne persönlich.
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-4xl mx-auto">
-              <div className="text-center p-8 rounded-2xl bg-gray-50 border border-gray-100">
-                <div className="text-3xl mb-4">📞</div>
-                <h3 className="font-bold text-gray-900 mb-2">Telefon</h3>
-                <a
-                  href="tel:+4994100000"
-                  className="text-primary-600 hover:text-primary-700 font-medium transition-colors"
-                >
-                  0941 / 000 00 00
-                </a>
-                <p className="text-sm text-gray-500 mt-2">
-                  Mo–Fr: 8:00–18:00 Uhr
-                </p>
-              </div>
-              <div className="text-center p-8 rounded-2xl bg-gray-50 border border-gray-100">
-                <div className="text-3xl mb-4">✉️</div>
-                <h3 className="font-bold text-gray-900 mb-2">E-Mail</h3>
-                <a
-                  href="mailto:info@sauber-u-rein.de"
-                  className="text-primary-600 hover:text-primary-700 font-medium transition-colors"
-                >
-                  info@sauber-u-rein.de
-                </a>
-                <p className="text-sm text-gray-500 mt-2">
-                  Antwort innerhalb von 24 Std.
-                </p>
-              </div>
-              <div className="text-center p-8 rounded-2xl bg-gray-50 border border-gray-100">
-                <div className="text-3xl mb-4">📍</div>
-                <h3 className="font-bold text-gray-900 mb-2">Adresse</h3>
-                <p className="text-gray-600">
-                  Sauber &amp; Rein
-                  <br />
-                  93047 Regensburg
-                </p>
-                <p className="text-sm text-gray-500 mt-2">Oberpfalz, Bayern</p>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      {/* Footer */}
-      <footer className="bg-gray-900 text-gray-400">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-            <div>
-              <div className="text-xl font-bold text-white mb-3">
-                Sauber <span className="text-primary-500">&amp;</span> Rein
-              </div>
-              <p className="text-sm leading-relaxed">
-                Ihr zuverlässiger Partner für Gebäudereinigung und
-                Hausmeisterservice in Regensburg und Umgebung.
-              </p>
-            </div>
-            <div>
-              <h4 className="text-white font-semibold mb-3">Leistungen</h4>
-              <ul className="space-y-2 text-sm">
-                <li>Gebäudereinigung</li>
-                <li>Treppenhausreinigung</li>
-                <li>Unterhaltsreinigung</li>
-                <li>Glasreinigung</li>
-                <li>Hausmeisterservice</li>
-                <li>Winterdienst</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-white font-semibold mb-3">Kontakt</h4>
-              <ul className="space-y-2 text-sm">
-                <li>Tel: 0941 / 000 00 00</li>
-                <li>
-                  <a
-                    href="mailto:info@sauber-u-rein.de"
-                    className="hover:text-primary-400 transition-colors"
-                  >
-                    info@sauber-u-rein.de
-                  </a>
-                </li>
-                <li>93047 Regensburg</li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
+      {/* Einzugsgebiet */}
+      <section className="section-padding bg-white">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="section-title">Gebäudereinigung in Regensburg und Umgebung</h2>
+          <div className="text-gray-600 leading-relaxed space-y-4 mt-8">
             <p>
-              &copy; {new Date().getFullYear()} Sauber &amp; Rein. Alle Rechte
-              vorbehalten.
+              Sauber &amp; Rein ist in ganz Regensburg aktiv. Unser Einzugsgebiet
+              umfasst die <strong>Innenstadt und Altstadt</strong> (UNESCO-Welterbe),{" "}
+              <strong>Westenviertel</strong>, <strong>Kumpfmühl</strong>,{" "}
+              <strong>Stadtamhof</strong>, <strong>Galgenberg</strong>,{" "}
+              <strong>Schwabelweis</strong>, <strong>Konradsiedlung</strong>,{" "}
+              <strong>Königswiesen</strong> und <strong>Prüfening</strong>.
             </p>
-            <div className="flex gap-6">
-              <a href="#" className="hover:text-primary-400 transition-colors">
-                Impressum
-              </a>
-              <a href="#" className="hover:text-primary-400 transition-colors">
-                Datenschutz
-              </a>
+            <p>
+              Wir betreuen Büro- und Geschäftsobjekte im Gewerbepark Regensburg
+              ebenso wie Wohnanlagen in Kumpfmühl oder Praxen in der Innenstadt.
+              Als Reinigungsfirma in Regensburg kennen wir die lokale
+              Infrastruktur: Zufahrtsbeschränkungen, Stellplätze und Reinigung
+              in denkmalgeschütztem Altbaubestand.
+            </p>
+            <p className="font-medium text-gray-900">
+              Gewerbliche Reinigung in Regensburg, die sich nach Ihrem Betrieb
+              richtet &mdash; nicht umgekehrt.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <CTABanner
+        title="Lassen Sie sich noch heute kostenlos beraten"
+        text="Sauber & Rein steht für Hygiene, die man sieht — und für Verlässlichkeit, die man spürt. Wir melden uns innerhalb von 24 Stunden."
+      />
+
+      <FAQ items={faqItems} />
+
+      {/* Kontakt */}
+      <section id="kontakt" className="section-padding bg-white">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="section-title">Kontakt</h2>
+          <p className="section-subtitle">
+            Rufen Sie uns an oder schreiben Sie uns. Wir beraten Sie persönlich
+            zu Ihrem Objekt in Regensburg.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-4xl mx-auto">
+            <a
+              href="tel:+491705749211"
+              className="text-center p-8 rounded-2xl bg-gray-50 border border-gray-100 hover:border-brand-200 hover:shadow-md transition-all"
+            >
+              <div className="text-3xl mb-4">📞</div>
+              <h3 className="font-bold text-gray-900 mb-2">Telefon</h3>
+              <span className="text-brand-500 font-medium">+49 (0) 170 5749211</span>
+              <p className="text-sm text-gray-500 mt-2">Persönliche Beratung</p>
+            </a>
+            <a
+              href="mailto:kontakt@sauber-u-rein.de"
+              className="text-center p-8 rounded-2xl bg-gray-50 border border-gray-100 hover:border-brand-200 hover:shadow-md transition-all"
+            >
+              <div className="text-3xl mb-4">✉️</div>
+              <h3 className="font-bold text-gray-900 mb-2">E-Mail</h3>
+              <span className="text-brand-500 font-medium">kontakt@sauber-u-rein.de</span>
+              <p className="text-sm text-gray-500 mt-2">Antwort innerhalb von 24 Std.</p>
+            </a>
+            <div className="text-center p-8 rounded-2xl bg-gray-50 border border-gray-100">
+              <div className="text-3xl mb-4">📍</div>
+              <h3 className="font-bold text-gray-900 mb-2">Adresse</h3>
+              <p className="text-gray-600">
+                Sauber &amp; Rein<br />
+                Johanna-Kinkel-Str. 1<br />
+                93049 Regensburg
+              </p>
             </div>
           </div>
         </div>
-      </footer>
+      </section>
     </>
   );
 }

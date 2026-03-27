@@ -1,25 +1,34 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Navigation from "./components/Navigation";
+import Footer from "./components/Footer";
 
 export const metadata: Metadata = {
-  title: "Sauber & Rein - Gebäude- und Hausmeisterservice Regensburg",
+  title: {
+    default: "Gebäudereinigung Regensburg | Sauber & Rein",
+    template: "%s | Sauber & Rein",
+  },
   description:
-    "Professioneller Gebäudereinigungsservice und Hausmeisterservice in Regensburg. Gebäudereinigung, Treppenhausreinigung, Unterhaltsreinigung, Glasreinigung, Winterdienst und mehr.",
+    "Professionelle Gebäudereinigung in Regensburg: Büro, Praxis, Gewerbe. Sauber & Rein steht für Zuverlässigkeit. Jetzt kostenloses Angebot anfordern.",
   keywords: [
     "Gebäudereinigung Regensburg",
+    "Reinigungsunternehmen Regensburg",
+    "Reinigung Regensburg",
+    "Reinigungsfirma Regensburg",
     "Hausmeisterservice Regensburg",
-    "Treppenhausreinigung",
-    "Unterhaltsreinigung",
-    "Glasreinigung",
+    "Büroreinigung Regensburg",
+    "Praxisreinigung Regensburg",
+    "Fensterreinigung Regensburg",
     "Winterdienst Regensburg",
+    "Baureinigung Regensburg",
+    "Unterhaltsreinigung Regensburg",
     "Reinigungsservice Regensburg",
-    "Sauber und Rein",
   ],
   authors: [{ name: "Sauber & Rein" }],
   openGraph: {
-    title: "Sauber & Rein - Gebäude- und Hausmeisterservice Regensburg",
+    title: "Gebäudereinigung Regensburg | Sauber & Rein",
     description:
-      "Ihr zuverlässiger Partner für Gebäudereinigung und Hausmeisterservice in Regensburg und Umgebung.",
+      "Professionelle Gebäudereinigung in Regensburg: Büro, Praxis, Gewerbe. Sauber & Rein steht für Zuverlässigkeit.",
     url: "https://sauber-u-rein.de",
     siteName: "Sauber & Rein",
     locale: "de_DE",
@@ -39,7 +48,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="de">
-      <body className="min-h-screen bg-white">{children}</body>
+      <body className="min-h-screen bg-white">
+        <Navigation />
+        <main className="pt-16 sm:pt-20">{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }
